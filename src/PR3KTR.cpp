@@ -13,7 +13,8 @@ void PR3KTR::setID(uint8_t ID)
 
 bool PR3KTR::getN(DATA& data)
 {
-  uint8_t command[] = { 0x01,0x03, 0x00, 0x1e, 0x00, 0x01, 0xe4, 0x0c };
+  uint8_t command[] = { 0x01,0x03, 0x00, 0x1e, 0x00, 0x01, 0x00, 0x00 };
+  command[0] = a_ID;
   RTU_CRC(command, 6, &command[6], &command[7]);
   _recvLen = sentDataLen(command);
   _stream->write(command, sizeof(command));
@@ -33,7 +34,8 @@ bool PR3KTR::getN(DATA& data)
 
 bool PR3KTR::getP(DATA& data)
 {
-  uint8_t command[] = { 0x01,0x03, 0x00, 0x1f, 0x00, 0x01, 0xb5, 0xcc };
+  uint8_t command[] = { 0x01,0x03, 0x00, 0x1f, 0x00, 0x01, 0x00, 0x00 };
+  command[0] = a_ID;
   RTU_CRC(command, 6, &command[6], &command[7]);
   _recvLen = sentDataLen(command);
   _stream->write(command, sizeof(command));
@@ -53,7 +55,8 @@ bool PR3KTR::getP(DATA& data)
 
 bool PR3KTR::getK(DATA& data)
 {
-  uint8_t command[] = { 0x01,0x03, 0x00, 0x20, 0x00, 0x01, 0x85, 0xc0 };
+  uint8_t command[] = { 0x01,0x03, 0x00, 0x20, 0x00, 0x01, 0x00, 0x00 };
+  command[0] = a_ID;
   RTU_CRC(command, 6, &command[6], &command[7]);
   _recvLen = sentDataLen(command);
   _stream->write(command, sizeof(command));
@@ -73,7 +76,8 @@ bool PR3KTR::getK(DATA& data)
 
 bool PR3KTR::getNPK(DATA& data)
 {
-  uint8_t command[] = { 0x01,0x03, 0x00, 0x1e, 0x00, 0x03, 0x65, 0xCD };
+  uint8_t command[] = { 0x01,0x03, 0x00, 0x1e, 0x00, 0x03, 0x00, 0x00 };
+  command[0] = a_ID;
   RTU_CRC(command, 6, &command[6], &command[7]);
   _recvLen = sentDataLen(command);
   _stream->write(command, sizeof(command));
