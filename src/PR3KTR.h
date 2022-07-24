@@ -13,8 +13,8 @@
 
 	  struct DATA {
 		uint16_t NITROGEN;
-		uint16_t POTASSIUM;
 		uint16_t PHOSPHORUS;
+		uint16_t POTASSIUM;
 	  };
 
 	  PR3KTR(Stream&);

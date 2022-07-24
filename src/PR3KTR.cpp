@@ -151,15 +151,15 @@ void PR3KTR::loop()
 	  _data->NITROGEN   = makeWord(_payload[0], _payload[1]);
 	  break;
 	case g_P:
-	  _data->POTASSIUM  = makeWord(_payload[0], _payload[1]);
+	  _data->PHOSPHORUS  = makeWord(_payload[0], _payload[1]);
 	  break;
 	case g_K:
-	  _data->PHOSPHORUS = makeWord(_payload[0], _payload[1]);
+	  _data->POTASSIUM = makeWord(_payload[0], _payload[1]);
 	  break;
 	case g_NPK:
       _data->NITROGEN   = makeWord(_payload[0], _payload[1]);
-      _data->POTASSIUM  = makeWord(_payload[2], _payload[3]);
-      _data->PHOSPHORUS = makeWord(_payload[4], _payload[5]);
+      _data->PHOSPHORUS  = makeWord(_payload[2], _payload[3]);
+      _data->POTASSIUM = makeWord(_payload[4], _payload[5]);
 	  break;
 	}
   }
