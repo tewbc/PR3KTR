@@ -16,7 +16,7 @@ PR3KTR npk(Serial2);    // decare class to other name.
 PR3KTR::DATA data;      // decare DATA structure to other name
 void setup() {
   Serial.begin(9600);   // GPIO1, GPIO3 (TX/RX pin on ESP-32 Development Board)
-  Serial2.begin(4800);  // GPIO15, GPIO13 (TX/RX pin on ESP-32 Development Board)
+  Serial2.begin(4800);  // GPIO17, GPIO16 (TX/RX pin on ESP-32 Development Board)
   npk.setID(0x01);      // Set Slave ID
 }
 
