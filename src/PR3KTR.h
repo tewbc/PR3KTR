@@ -5,17 +5,13 @@
 	class PR3KTR
 	{
 	public:
-	  static const uint16_t SINGLE_RESPONSE_TIME = 1000;
-	  static const uint16_t TOTAL_RESPONSE_TIME = 1000 * 10;
-	  static const uint16_t STEADY_RESPONSE_TIME = 1000 * 30;
-
-	  static const uint16_t BAUD_RATE = 4800;
-
+	  static const uint16_t SINGLE_RESPONSE_TIME = 5000;
 	  struct DATA {
 		uint16_t NITROGEN;
-		uint16_t PHOSPHORUS;
 		uint16_t POTASSIUM;
+		uint16_t PHOSPHORUS;
 	  };
+
 
 	  PR3KTR(Stream&);
 	  bool getN(DATA& data);
@@ -32,7 +28,8 @@
 	  uint8_t sentDataLen(byte buf[]);
 	  void RTU_CRC(byte buf[], int len, uint8_t *LB, uint8_t *HB);
 	  
-	  uint8_t _payload[20];				// For data 20 bytes MAX.
+	  uint8_t _payload[11];				// For data 11 bytes MAX.
+	  uint8_t _result[6];
 	  Stream* _stream;
 	  DATA* _data;
 	  STATUS _status;
@@ -46,6 +43,7 @@
 	  uint16_t _calculatedChecksum;
 
 	  void loop();
-	  void loopOne();
+	  void killArray();
+	  void showMSG();
 	};
 #endif
