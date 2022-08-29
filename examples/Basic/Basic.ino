@@ -13,16 +13,14 @@ void loop() {
     Serial.print("N (mg/L): ");
     Serial.println(data.NITROGEN);
   }
-  delay(200);
   if (npk.getP(data))  {                          //Get P value
     Serial.print("P (mg/L): ");
     Serial.println(data.POTASSIUM);
   }
-  delay(200);
   if (npk.getK(data))   {                         //Get K value
     Serial.print("K (mg/L): ");
     Serial.println(data.PHOSPHORUS);
   }
-  delay(200);
+  delay(1000);
   // Do other stuff...
 }
