@@ -5,7 +5,7 @@
 	class PR3KTR
 	{
 	public:
-	  static const uint16_t SINGLE_RESPONSE_TIME = 5000;
+	  static const uint16_t SINGLE_RESPONSE_TIME = 500;
 	  struct DATA {
 		uint16_t NITROGEN;
 		uint16_t POTASSIUM;
@@ -26,6 +26,7 @@
 
 	  uint8_t recvPacketLen(byte buf[]);
 	  uint8_t sentDataLen(byte buf[]);
+	  void showCMD(byte buf[], int len);
 	  void RTU_CRC(byte buf[], int len, uint8_t *LB, uint8_t *HB);
 	  
 	  uint8_t _payload[11];				// For data 11 bytes MAX.

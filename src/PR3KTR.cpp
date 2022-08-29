@@ -16,6 +16,7 @@ bool PR3KTR::getN(DATA& data)
   uint8_t command[] = { 0x01,0x03, 0x00, 0x1e, 0x00, 0x01, 0xe4, 0x0c };
   RTU_CRC(command, 6, &command[6], &command[7]);
   _recvLen = sentDataLen(command);
+//  showCMD(command, sizeof(command));
   _stream->write(command, sizeof(command));
   delay(100);
   _mode = g_N;
@@ -185,6 +186,14 @@ uint8_t PR3KTR::sentDataLen(byte buf[]) {
 	return buf[5] * 2;
 }
 
+void PR3KTR::showCMD(byte buf[], int len) {
+	for (int i = 0; i < len; i++) {
+	  Serial.print(buf[i], HEX);
+	  if(i < len - 1)
+		Serial.print(", ");
+	}
+	Serial.println();
+}
 void PR3KTR::killArray() {
 	memset(_payload, 0, sizeof(_payload));
 	memset(_result, 0, sizeof(_result));
