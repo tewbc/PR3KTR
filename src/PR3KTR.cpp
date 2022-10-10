@@ -142,6 +142,7 @@ void PR3KTR::loop() {
       }
       break;
     default: {
+		double Y_N, Y_P, Y_K = 0.0000f;
 		if(_index == _recvLen + 4 ) {
 		  uint8_t _LSB = 0;
 		  uint8_t _MSB = 0;
@@ -153,12 +154,18 @@ void PR3KTR::loop() {
 			switch (_mode){
 			case g_N:
 			  _data->NITROGEN   = makeWord(_result[0], _result[1]);
+			  Y_N = (-0.00006579082*(_data->NITROGEN^4))+(0.017572425*(_data->NITROGEN^3))+(-1.734044423*(_data->NITROGEN^2))+(74.85391835*_data->NITROGEN)-1161.253647;
+			  _data->NITROGEN = (int)Y_N;
 			  break;
 			case g_P:
 			  _data->POTASSIUM  = makeWord(_result[0], _result[1]);
+			  Y_P = (-0.00000943138*(_data->POTASSIUM^4))+(0.003681183*(_data->POTASSIUM^3))+(-0.525996162*(_data->POTASSIUM^2))+(32.65077477*_data->POTASSIUM)-704.1543286;
+			  _data->POTASSIUM = (int)Y_P;
 			  break;
 			case g_K:
 			  _data->PHOSPHORUS = makeWord(_result[0], _result[1]);
+			  Y_K = (-0.00000015821*(_data->PHOSPHORUS^4))+(0.000125045*(_data->PHOSPHORUS^3))+(-0.035897927*(_data->PHOSPHORUS^2))+(4.387916011*_data->PHOSPHORUS)+35.42507285;
+			  _data->PHOSPHORUS = (int)Y_K;
 			  break;
 			case g_NPK:
 			  _data->NITROGEN   = makeWord(_result[0], _result[1]);
